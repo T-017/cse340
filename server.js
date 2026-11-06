@@ -28,25 +28,12 @@ app.get('/', async (req, res) => {
 });
 
 app.get('/organizations', async (req, res) => {
-  try {
-    const organizations = await getAllOrganizations();
-    console.log('Organizations:', organizations);
+  const organizations = await getAllOrganizations();
+  console.log(organizations);
 
-    const title = 'Our Partner Organizations';
-    res.render('organizations', { title, organizations });
-  } catch (error) {
-    console.error('Organizations route error:', error);
-    res.status(500).send(`<pre>${error.stack}</pre>`);
-  }
+  const title = 'Our Partner Organizations';
+  res.render('organizations', { title, organizations });
 });
-
-// app.get('/organizations', async (req, res) => {
-//   const organizations = await getAllOrganizations();
-//   console.log(organizations);
-
-//   const title = 'Our Partner Organizations';
-//   res.render('organizations', { title });
-// });
 
 app.get('/projects', async (req, res) => {
   const title = 'Service Projects';
