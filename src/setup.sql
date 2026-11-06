@@ -26,3 +26,36 @@ VALUES
      'A volunteer coordination group supporting local charities and service initiatives.',
      'hello@unityserve.org',
      'unityserve-logo.png');
+
+
+-- Create the project table
+CREATE TABLE project (
+    project_id SERIAL PRIMARY KEY,
+    organization_id INTEGER NOT NULL REFERENCES organization(organization_id),
+    title VARCHAR(200) NOT NULL,
+    description TEXT NOT NULL,
+    project_date DATE NOT NULL
+);
+
+-- Insert at least 5 projects per organization (15 total)
+INSERT INTO project (organization_id, title, description, project_date) VALUES
+-- BrightFuture Builders (assuming organization_id = 1)
+(1, 'Community Park Cleanup', 'Help clean and beautify the local park.', '2026-11-15'),
+(1, 'Playground Equipment Repair', 'Repair and paint playground equipment.', '2026-11-22'),
+(1, 'Sidewalk Repair Day', 'Fix cracked sidewalks in the neighborhood.', '2026-12-06'),
+(1, 'Community Garden Build', 'Build raised beds for a new community garden.', '2026-12-13'),
+(1, 'Winter Shelter Prep', 'Prepare materials for winter shelter improvements.', '2026-12-20'),
+
+-- GreenHarvest Growers (assuming organization_id = 2)
+(2, 'Harvest Day', 'Help harvest vegetables from the urban farm.', '2026-11-08'),
+(2, 'Seed Starting Workshop', 'Learn how to start seeds indoors.', '2026-11-16'),
+(2, 'Composting Education', 'Teach neighbors how to compost.', '2026-11-29'),
+(2, 'Farmers Market Setup', 'Help set up and run the weekend farmers market.', '2026-12-07'),
+(2, 'Greenhouse Cleaning', 'Clean and prepare the greenhouse for winter.', '2026-12-14'),
+
+-- UnityServe Volunteers (assuming organization_id = 3)
+(3, 'Food Drive Sorting', 'Sort and package donated food.', '2026-11-10'),
+(3, 'Senior Center Visit', 'Spend time with seniors at the local center.', '2026-11-18'),
+(3, 'Toy Drive Collection', 'Collect and organize toys for children.', '2026-11-25'),
+(3, 'Holiday Meal Prep', 'Help prepare meals for families in need.', '2026-12-12'),
+(3, 'New Year Volunteer Orientation', 'Train new volunteers for the upcoming year.', '2026-12-28');
