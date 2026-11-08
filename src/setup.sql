@@ -37,23 +37,23 @@ CREATE TABLE project (
     project_date DATE NOT NULL
 );
 
--- Insert at least 5 projects per organization (15 total)
+-- 5 projects per organization (15 total)
 INSERT INTO project (organization_id, title, description, project_date) VALUES
--- BrightFuture Builders (assuming organization_id = 1)
+-- BrightFuture Builders (1)
 (1, 'Community Park Cleanup', 'Help clean and beautify the local park.', '2026-11-15'),
 (1, 'Playground Equipment Repair', 'Repair and paint playground equipment.', '2026-11-22'),
 (1, 'Sidewalk Repair Day', 'Fix cracked sidewalks in the neighborhood.', '2026-12-06'),
 (1, 'Community Garden Build', 'Build raised beds for a new community garden.', '2026-12-13'),
 (1, 'Winter Shelter Prep', 'Prepare materials for winter shelter improvements.', '2026-12-20'),
 
--- GreenHarvest Growers (assuming organization_id = 2)
+-- GreenHarvest Growers (2)
 (2, 'Harvest Day', 'Help harvest vegetables from the urban farm.', '2026-11-08'),
 (2, 'Seed Starting Workshop', 'Learn how to start seeds indoors.', '2026-11-16'),
 (2, 'Composting Education', 'Teach neighbors how to compost.', '2026-11-29'),
 (2, 'Farmers Market Setup', 'Help set up and run the weekend farmers market.', '2026-12-07'),
 (2, 'Greenhouse Cleaning', 'Clean and prepare the greenhouse for winter.', '2026-12-14'),
 
--- UnityServe Volunteers (assuming organization_id = 3)
+-- UnityServe Volunteers (3)
 (3, 'Food Drive Sorting', 'Sort and package donated food.', '2026-11-10'),
 (3, 'Senior Center Visit', 'Spend time with seniors at the local center.', '2026-11-18'),
 (3, 'Toy Drive Collection', 'Collect and organize toys for children.', '2026-11-25'),
@@ -66,22 +66,21 @@ CREATE TABLE category (
     name VARCHAR(100) NOT NULL UNIQUE
 );
 
--- Junction table for many-to-many relationship
+-- Many-to-many relationship
 CREATE TABLE project_category (
     project_id INTEGER NOT NULL REFERENCES project(project_id) ON DELETE CASCADE,
     category_id INTEGER NOT NULL REFERENCES category(category_id) ON DELETE CASCADE,
     PRIMARY KEY (project_id, category_id)
 );
 
--- Insert at least 3 categories
+-- 3 categories
 INSERT INTO category (name) VALUES
     ('Environmental'),
     ('Educational'),
     ('Community Service'),
     ('Health and Wellness');
 
--- Associate each project with at least one category
--- (Adjust project_id values if yours are different)
+-- Each project has at least one category
 INSERT INTO project_category (project_id, category_id) VALUES
     -- Environmental
     (1, 1), (2, 1), (3, 1), (4, 1), (5, 1),
