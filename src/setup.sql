@@ -59,3 +59,36 @@ INSERT INTO project (organization_id, title, description, project_date) VALUES
 (3, 'Toy Drive Collection', 'Collect and organize toys for children.', '2026-11-25'),
 (3, 'Holiday Meal Prep', 'Help prepare meals for families in need.', '2026-12-12'),
 (3, 'New Year Volunteer Orientation', 'Train new volunteers for the upcoming year.', '2026-12-28');
+
+-- Categories table
+CREATE TABLE category (
+    category_id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL UNIQUE
+);
+
+-- Junction table for many-to-many relationship
+CREATE TABLE project_category (
+    project_id INTEGER NOT NULL REFERENCES project(project_id) ON DELETE CASCADE,
+    category_id INTEGER NOT NULL REFERENCES category(category_id) ON DELETE CASCADE,
+    PRIMARY KEY (project_id, category_id)
+);
+
+-- Insert at least 3 categories
+INSERT INTO category (name) VALUES
+    ('Environmental'),
+    ('Educational'),
+    ('Community Service'),
+    ('Health and Wellness');
+
+-- Associate each project with at least one category
+-- (Adjust project_id values if yours are different)
+INSERT INTO project_category (project_id, category_id) VALUES
+    -- Environmental
+    (1, 1), (2, 1), (3, 1), (4, 1), (5, 1),
+    (6, 1), (7, 1), (8, 1), (9, 1), (10, 1),
+    -- Educational
+    (6, 2), (7, 2), (8, 2), (11, 2), (15, 2),
+    -- Community Service
+    (1, 3), (3, 3), (5, 3), (11, 3), (12, 3), (13, 3), (14, 3),
+    -- Health and Wellness
+    (12, 4), (14, 4);
