@@ -17,6 +17,20 @@ const app = express();
 // Middleware for serving static files
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Middleware to log all incoming requests
+app.use((req, res, next) => {
+  if (NODE_ENV === 'development') {
+    console.log(`${req.method} ${req.url}`);
+  }
+  next();
+});
+
+// Middleware to make NODE_ENV available to all templates
+app.use((req, res, next) => {
+  res.locals.NODE_ENV = NODE_ENV;
+  next();
+});
+
 // Set EJS as the templating engine
 app.set('view engine', 'ejs');
 
