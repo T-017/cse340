@@ -1,10 +1,10 @@
 import express from 'express';
 
-import { showHomePage } from './src/controllers/index.js';
-import { showOrganizationsPage } from './src/controllers/organizations.js';
-import { showProjectsPage } from './src/controllers/projects.js';
+import { showHomePage } from './controllers/index.js';
+import { showOrganizationsPage } from './controllers/organizations.js';
+import { showProjectsPage } from './controllers/projects.js';
 import { showCategoriesPage } from './controllers/categories.js';
-import { testErrorPage } from './src/controllers/errors.js';
+import { testErrorPage } from './controllers/errors.js';
 
 const router = express.Router();
 
