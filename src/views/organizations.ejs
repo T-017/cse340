@@ -4,21 +4,14 @@
       <%= title %>
     </h1>
     <p>Here are a few of our partner organizations:</p>
-    <ul class="organization-list">
+    <ul>
       <% organizations.forEach(organization=> { %>
         <li>
           <img src="/images/<%= organization.logo_filename %>" alt="<%= organization.name %> logo">
-          <div>
-            <strong>
-              <%= organization.name %>
-            </strong>:
-            <a href="mailto:<%= organization.contact_email %>">
-              <%= organization.contact_email %>
-            </a>
-            <p>
-              <%= organization.description %>
-            </p>
-          </div>
+          <a href="/organization/<%= organization.organization_id %>">
+            <%= organization.name %>
+          </a>:
+          <%= organization.contact_email %>
         </li>
         <% }) %>
     </ul>
