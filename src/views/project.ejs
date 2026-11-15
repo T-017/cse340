@@ -20,8 +20,21 @@
           <%= project.organization_name %>
         </a>
       </p>
-      <% } else { %>
-        <p>Project not found.</p>
+
+      <% if (categories && categories.length> 0) { %>
+        <p><strong>Categories:</strong></p>
+        <ul class="category-tags">
+          <% categories.forEach(category=> { %>
+            <li>
+              <a href="/category/<%= category.category_id %>">
+                <%= category.name %>
+              </a>
+            </li>
+            <% }) %>
+        </ul>
         <% } %>
+          <% } else { %>
+            <p>Project not found.</p>
+            <% } %>
   </main>
   <%- include('partials/footer') %>
