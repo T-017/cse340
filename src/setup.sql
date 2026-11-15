@@ -25,12 +25,7 @@ VALUES
     ('UnityServe Volunteers',
      'A volunteer coordination group supporting local charities and service initiatives.',
      'hello@unityserve.org',
-     'unityserve-logo.png'), 
-     
-     ('Health and Wellness Initiative',
-     'A nonprofit focused on promoting health and wellness in the community.', 
-     'contact@healthwellness.org', 
-     'healthwellness-logo.png');
+     'unityserve-logo.png');
 
 
 -- Create the project table
@@ -63,14 +58,7 @@ INSERT INTO project (organization_id, title, description, project_date) VALUES
 (3, 'Senior Center Visit', 'Spend time with seniors at the local center.', '2026-11-18'),
 (3, 'Toy Drive Collection', 'Collect and organize toys for children.', '2026-11-25'),
 (3, 'Holiday Meal Prep', 'Help prepare meals for families in need.', '2026-12-12'),
-(3, 'New Year Volunteer Orientation', 'Train new volunteers for the upcoming year.', '2026-12-28')
-
--- Health and Wellness Initiative (4)
-(4, 'Community Health Fair', 'Organize a health fair for the community.', '2026-11-12'),
-(4, 'Wellness Workshop', 'Conduct a workshop on mental and physical wellness.', '2026-11-20'),
-(4, 'Fitness Challenge', 'Lead a community fitness challenge.', '2026-11-27'),
-(4, 'Nutrition Education', 'Teach healthy eating habits.', '2026-12-05'),
-(4, 'Health Screening Event', 'Assist with health screenings for community members.', '2026-12-15');
+(3, 'New Year Volunteer Orientation', 'Train new volunteers for the upcoming year.', '2026-12-28');
 
 -- Categories table
 CREATE TABLE category (
@@ -96,10 +84,10 @@ INSERT INTO category (name) VALUES
 INSERT INTO project_category (project_id, category_id) VALUES
     -- Environmental
     (1, 1), (2, 1), (3, 1), (4, 1), (5, 1),
-    (6, 1), (7, 1), (8, 1), (9, 1), (10, 1), (11, 1), (12, 1), (13, 1), (14, 1), (15, 1), 
+    (6, 1), (7, 1), (8, 1), (9, 1), (10, 1),
     -- Educational
     (6, 2), (7, 2), (8, 2), (11, 2), (15, 2),
     -- Community Service
-    (1, 3), (3, 3), (5, 3), (11, 3), (12, 3), (13, 3), (14, 3), (15, 3), 
+    (1, 3), (3, 3), (5, 3), (11, 3), (12, 3), (13, 3), (14, 3),
     -- Health and Wellness
-    (12, 4), (14, 4), (16, 4);
+    (12, 4), (14, 4);
