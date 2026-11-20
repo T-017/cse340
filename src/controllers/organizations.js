@@ -1,6 +1,7 @@
 import { getAllOrganizations, getOrganizationDetails, createOrganization } from '../models/organizations.js';
 import { getProjectsByOrganizationId } from '../models/projects.js';
 import { body, validationResult } from 'express-validator';
+import { updateOrganization } from '../models/organizations.js';
 
 const organizationValidation = [
   body('name')
@@ -59,4 +60,36 @@ const processNewOrganizationForm = async (req, res) => {
   res.redirect(`/organization/${organizationId}`);
 };
 
-export { showOrganizationsPage, showOrganizationDetailsPage, showNewOrganizationForm, processNewOrganizationForm, organizationValidation };
+const showEditOrganizationForm = async (req, res) => {
+  const organizationId = req.params.id;
+  const organizationDetails = await getOrganizationDetails(organizationId);
+  const title = 'Edit Organization';
+  res.render('edit-organization', { title, organizationDetails });
+};
+
+const processEditOrganizationForm = async (req, res) => {
+  const results = validationResult(req);
+  if (!results.isEmpty()) {
+    results.array().forEach((error) => {
+      req.flash('error', error.msg);
+    });
+    return res.redirect(`/edit-organization/${req.params.id}`);
+  }
+
+  const organizationId = req.params.id;
+  const { name, description, contactEmail, logoFilename } = req.body;
+
+  await updateOrganization(organizationId, name, description, contactEmail, logoFilename);
+  req.flash('success', 'Organization updated successfully!');
+  res.redirect(`/organization/${organizationId}`);
+};
+
+export {
+  showOrganizationsPage,
+  showOrganizationDetailsPage,
+  showNewOrganizationForm,
+  processNewOrganizationForm,
+  showEditOrganizationForm,
+  processEditOrganizationForm,
+  organizationValidation
+};
