@@ -1,6 +1,7 @@
 import express from 'express';
 
 import { showHomePage } from './controllers/index.js';
+
 import {
   showOrganizationsPage,
   showOrganizationDetailsPage,
@@ -10,6 +11,7 @@ import {
   processEditOrganizationForm,
   organizationValidation
 } from './controllers/organizations.js';
+
 import {
   showProjectsPage,
   showProjectDetailsPage,
@@ -17,12 +19,14 @@ import {
   processNewProjectForm,
   projectValidation
 } from './controllers/projects.js';
+
 import {
   showCategoriesPage,
   showCategoryDetailsPage,
   showAssignCategoriesForm,
   processAssignCategoriesForm
 } from './controllers/categories.js';
+
 import { testErrorPage } from './controllers/errors.js';
 
 
