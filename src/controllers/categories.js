@@ -3,7 +3,9 @@ import {
   getCategoryById,
   getProjectsByCategoryId,
   getCategoriesByProjectId,
-  updateCategoryAssignments
+  updateCategoryAssignments,
+  createCategory,
+  updateCategory,
 } from '../models/categories.js';
 
 import { body, validationResult } from 'express-validator';
