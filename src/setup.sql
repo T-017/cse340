@@ -1,7 +1,7 @@
 -- ------------------------------------------------------------------------
 -- Organizations Table
 -- ------------------------------------------------------------------------
-CREATE TABLE organizations (
+CREATE TABLE organization (
     organization_id SERIAL PRIMARY KEY,
     name VARCHAR(150) NOT NULL,
     description TEXT NOT NULL,
@@ -10,7 +10,7 @@ CREATE TABLE organizations (
 );
 
 -- Insert Sample Data into Organizations Table
-INSERT INTO organizations (name, description, contact_email, logo_filename)
+INSERT INTO organization (name, description, contact_email, logo_filename)
 VALUES
     ('BrightFuture Builders',
      'A nonprofit focused on improving community infrastructure through sustainable construction projects.',
